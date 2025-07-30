@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sustainable Tourism</title>
+    <link rel="icon" href="/static/images/logo.png" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Leaflet.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="/static/style/styles.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <a href="{{ url_for('index') }}">
+            <img src="/static/images/title.png" alt="Indonesia Logo" />
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="{{ url_for('indonesia') }}">Indonesia</a></li>
+          <li><a href="{{ url_for('asean') }}">ASEAN</a></li>
+          <li><a href="{{ url_for('data') }}">Data</a></li>
+          <li><a href="{{ url_for('model') }}">Model</a></li>
+          <li><a href="{{ url_for('information') }}">Information</a></li>
+        </ul>
+        <div class="language-selector">
+          <select class="language-dropdown" onchange="changeLanguage()">
+            <option value="EN">English</option>
+            <option value="ID">Indonesia</option>
+          </select>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="section-title">
+        <h2>Graphical Abstract</h2>
+      </div>
+      <div class="gambar-graphical">
+        <img src="/static/images/ab.png" alt="Graphicalabstract" />
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="/static/images/logo 1.png" alt="Indonesia Logo" />
+        </div>
+        <div class="footer-links">
+          <div>
+            <h3>Our Websites</h3>
+            <a href="https://asset.indonesia.travel/">Digital Asset</a>
+            <a href="https://indonesia.travel/yacht/en/">Yacht</a>
+            <a href="https://indonesia.travel/cruise/en/">Cruise</a>
+          </div>
+          <div>
+            <h3>Informations</h3>
+            <a href="https://www.indonesia.travel/gb/en/about-us">About Us</a>
+            <a href="https://www.indonesia.travel/gb/en/privacy-policy"
+              >Privacy Policy</a
+            >
+            <a href="https://www.indonesia.travel/gb/en/terms-conditions"
+              >Terms & Conditions</a
+            >
+            <a href="https://www.indonesia.travel/gb/en/cookie-policy"
+              >Cookie Policy</a
+            >
+            <a href="https://www.indonesia.travel/gb/en/contact-us"
+              >Contact Us</a
+            >
+          </div>
+
+          <div class="footer-social">
+            <h3>Sodial Media</h3>
+            <a
+              href="https://www.facebook.com/pesona.indonesia"
+              target="_blank"
+              title="Facebook"
+              ><i class="fab fa-facebook-f"></i> Facebook</a
+            >
+            <a
+              href="https://x.com/pesonaindonesia"
+              target="_blank"
+              title="Twitter"
+              ><i class="fab fa-twitter"></i> Twitter</a
+            >
+            <a
+              href="https://www.instagram.com/pesona.indonesia/#"
+              target="_blank"
+              title="Instagram"
+              ><i class="fab fa-instagram"></i> Instagram</a
+            >
+            <a
+              href="https://www.youtube.com/c/PesonaIndonesiaofficial"
+              target="_blank"
+              title="YouTube"
+              ><i class="fab fa-youtube"></i> Youtube</a
+            >
+            <a
+              href="https://www.tiktok.com/@pesonaindonesia"
+              target="_blank"
+              title="TikTok"
+              ><i class="fab fa-tiktok"></i> TikTok</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      var map = L.map("indonesia-map", {
+        center: [-5.0, 120.0],
+        zoom: 5,
+        zoomControl: false, // Menonaktifkan kontrol zoom
+        scrollWheelZoom: false, // Menonaktifkan zoom dengan scroll
+        dragging: false, // Menonaktifkan kemampuan peta untuk digeser
+        doubleClickZoom: false, // Menonaktifkan zoom dengan double-click
+        touchZoom: false, // Menonaktifkan zoom dengan sentuhan pada perangkat mobile
+        boxZoom: false, // Menonaktifkan zoom dengan area seleksi
+      }).setView([-5.0, 120.0], 5);
+
+      // Menambahkan layer peta dari OpenStreetMap
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        opacity: 0, // Menyembunyikan peta OpenStreetMap
+      }).addTo(map);
+
+      // Memuat GeoJSON untuk Indonesia
+      fetch("/static/data/indonesia-edit.json")
+        .then((response) => response.json())
+        .then((data) => {
+          var defaultColor = "#1d4ed8"; // Warna biru untuk wilayah default
+          var hoverColor = "#FF5733"; // Warna sorot saat hover (orange)
+
+          L.geoJSON(data, {
+            style: function () {
+              return {
+                fillColor: defaultColor, // Atur warna awal wilayah ke biru
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.5,
+              };
+            },
+            onEachFeature: function (feature, layer) {
+              // Membuat konten popup untuk setiap wilayah
+              var popupContent = `
+          <h3>${feature.properties.name}</h3>
+          <p>${
+            feature.properties.description || "Deskripsi tidak tersedia."
+          }</p>
+        `;
+
+              // Efek hover untuk menyoroti pulau atau wilayah dan menampilkan popup
+              layer.on("mouseover", function () {
+                layer.setStyle({
+                  fillColor: hoverColor, // Warna sorot saat hover
+                  weight: 2,
+                  opacity: 1,
+                  fillOpacity: 0.7,
+                });
+
+                // Menampilkan popup saat mouse menyentuh wilayah
+                layer.bindPopup(popupContent).openPopup();
+              });
+
+              // Reset style saat mouse keluar
+              layer.on("mouseout", function () {
+                layer.setStyle({
+                  fillColor: defaultColor, // Kembalikan ke warna biru
+                  weight: 1,
+                  opacity: 1,
+                  fillOpacity: 0.5,
+                });
+
+                // Menutup popup saat mouse keluar
+                layer.closePopup();
+              });
+            },
+          }).addTo(map);
+        })
+        .catch((error) => console.log("Error loading GeoJSON:", error));
+      document
+        .querySelector(".language-dropdown")
+        .addEventListener("change", function (event) {
+          const selectedLanguage = event.target.value;
+
+          // Implementasikan logika untuk mengubah bahasa, misalnya mengganti teks halaman atau menggunakan API untuk memuat ulang halaman dalam bahasa yang dipilih.
+          console.log(`Bahasa yang dipilih: ${selectedLanguage}`);
+        });
+
+      window.onscroll = function () {
+        var navbar = document.querySelector(".navbar");
+        if (window.pageYOffset > 0) {
+          navbar.classList.add("sticky");
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      };
+
+      let currentIndex = 0;
+      const items = document.querySelectorAll(".carousel-item");
+      const totalItems = items.length;
+      const indicators = document.querySelectorAll(".indicator");
+
+      function showNextSlide() {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+      }
+
+      function updateCarousel() {
+        const offset = -currentIndex * 100;
+        document.querySelector(
+          ".carousel-slide"
+        ).style.transform = `translateX(${offset}%)`;
+
+        // Update active indicator
+        indicators.forEach((indicator, index) => {
+          indicator.classList.remove("active");
+          if (index === currentIndex) {
+            indicator.classList.add("active");
+          }
+        });
+      }
+
+      function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+      }
+
+      // Automatically move to the next slide every 5 seconds
+      setInterval(showNextSlide, 5000);
+
+      function changeLanguage() {
+        const selectedLanguage =
+          document.querySelector(".language-dropdown").value;
+
+        // Tambahkan logika untuk merubah konten berdasarkan bahasa yang dipilih
+        if (selectedLanguage === "EN-IND") {
+          // Ganti konten halaman untuk bahasa Inggris - Indonesia
+          console.log("Language changed to EN - IND");
+          // Implementasikan perubahan konten di sini
+        } else if (selectedLanguage === "EN") {
+          // Ganti konten halaman untuk bahasa Inggris
+          console.log("Language changed to English");
+          // Implementasikan perubahan konten di sini
+        } else if (selectedLanguage === "ID") {
+          // Ganti konten halaman untuk bahasa Indonesia
+          console.log("Language changed to Indonesian");
+          // Implementasikan perubahan konten di sini
+        }
+      }
+    </script>
+  </body>
+</html>

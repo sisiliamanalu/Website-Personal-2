@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sustainable Tourism</title>
+    <link rel="icon" href="/static/images/logo.png" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Leaflet.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="/static/style/styles.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <a href="{{ url_for('index') }}">
+            <img src="/static/images/title.png" alt="Indonesia Logo" />
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="{{ url_for('index') }}">Indonesia</a></li>
+          <li><a href="{{ url_for('asean') }}">ASEAN</a></li>
+          <li><a href="{{ url_for('data') }}">Data</a></li>
+          <li><a href="{{ url_for('model') }}">Model</a></li>
+          <li><a href="{{ url_for('information') }}">Information</a></li>
+        </ul>
+        <div class="language-selector">
+          <select class="language-dropdown" onchange="changeLanguage()">
+            <option value="EN">English</option>
+            <option value="ID">Indonesia</option>
+          </select>
+        </div>
+      </nav>
+    </header>
+    <!-- Main -->
+    <main>
+      <div class="intro">
+        <p>
+          <strong>Sustainable tourism</strong> is tourism that takes full
+          account of its current and future economic, social, and environmental
+          impacts, addressing the needs of visitors, the industry, the
+          environment, and host communities.
+        </p>
+        <p>
+          Sustainable tourism development guidelines and management practices
+          are applicable to all forms of tourism in all types of destinations,
+          including mass tourism and the various niche tourism segments.
+          Sustainability principles refer to the environmental, economic, and
+          socio-cultural aspects of tourism development, and a suitable balance
+          must be established between these three dimensions to guarantee its
+          long-term sustainability.
+        </p>
+        <p>Thus, sustainable tourism should:</p>
+        <ol>
+          <li>
+            <span class="highlight">Economic:</span> Ensure long-term economic
+            benefits, provide fair opportunities, create jobs, and support
+            poverty reduction.
+          </li>
+          <li>
+            <span class="highlight">Environmental:</span> Use natural resources
+            responsibly, support ecological balance, and protect biodiversity
+            and natural heritage.
+          </li>
+          <li>
+            <span class="highlight">Socio-Cultural:</span> Respect local
+            cultures, preserve cultural heritage and traditions, and promote
+            intercultural understanding.
+          </li>
+        </ol>
+
+        <h1 class="title-economy">Economic</h1>
+        <p class="description">
+          Economic sustainable tourism is a form of tourism sector development
+          and management that aims
+          <strong> provide long-term economic benefits </strong> that are fair
+          and equitable to all stakeholders, especially local communities,
+          without sacrificing social, cultural, and environmental
+          sustainability. This concept emphasizes that economic growth resulting
+          from tourism activities must be able to
+          <strong
+            >the local economy, support inclusive development, and reduce
+            disparities between social groups,
+          </strong>
+          while ensuring that tourism attractions are maintained for future
+          generations.
+        </p>
+
+        <h1>Functions and Objectives of Sustainable Tourism Economy</h1>
+        <ul class="objectives-list">
+          <li>
+            <strong>Increasing Local Income</strong>: A sustainable tourism
+            economy helps local communities earn income through various
+            activities, such as homestay businesses, handicrafts, local cuisine,
+            tour guides, and others.
+          </li>
+          <li>
+            <strong>Encouraging Economic Independence</strong>: One of the main
+            objectives is to create economic independence for local communities
+            so that they are not always dependent on external investors. Tourism
+            becomes a tool to strengthen the economy of villages or remote
+            areas.
+          </li>
+          <li>
+            <strong>Minimizing Economic Leakage</strong>: Economic leakage
+            occurs when most of the income from tourism actually flows out of
+            the destination (for example to multinational companies or foreign
+            operators). In sustainable tourism, this leakage is minimized by
+            prioritizing local products and services.
+          </li>
+        </ul>
+        <h1 class="title-economy">Environment</h1>
+        <p class="description">
+          Environmental sustainable tourism is an approach to tourism
+          development and management that aims to
+          <strong>
+            negative impacts on the environment and preserve the natural
+            resources and biodiversity</strong
+          >
+          that form the basis of the tourist attraction itself. Environmentally
+          sustainable tourism emphasizes the importance of maintaining ecosystem
+          balance, using resources wisely, and promoting environmentally
+          friendly tourism behavior.
+        </p>
+
+        <h1>Functions and Objectives of Sustainable Tourism Economy</h1>
+        <ul class="objectives-list">
+          <li>
+            <strong>Conserving Natural Resources</strong>: Tourism should
+            support the preservation of forests, rivers, and wetlands, and not
+            drastically change the landscape. This includes protecting local
+            flora and fauna
+          </li>
+          <li>
+            <strong>Managing Waste and Pollution</strong>: Waste management from
+            hotels, restaurants, and tourists should be carried out in a
+            responsible manner so as not to pollute the land, water, or air.
+          </li>
+          <li>
+            <strong>Reducing Carbon Footprint </strong>: Promoting low-emission
+            transportation, such as bicycles, electric vehicles, or walking in
+            tourist areas, is an important part of the environmental strategy.
+          </li>
+          <li>
+            <strong>Developing Green Infrastructure </strong>: Tourism buildings
+            and facilities (such as resorts and restaurants) should use
+            energy-efficient technology, water recycling systems, and
+            environmentally friendly building materials.
+          </li>
+        </ul>
+        <h1 class="title-economy">Social</h1>
+        <p class="description">
+          Social sustainable tourism is an approach to the development and
+          management of the tourism sector that focuses on
+          <strong>
+            welfare, cultural preservation, empowerment of local communities,
+            and respect for humanitarian values ​​and social justice.
+          </strong>
+          The goal is to ensure that tourism activities do not harm local
+          communities, but rather strengthen social identity, expand community
+          participation, and respect the rights of all social groups, including
+          minorities, women, and indigenous peoples.
+        </p>
+
+        <h1>Functions and Objectives of Sustainable Tourism Economy</h1>
+        <ul class="objectives-list">
+          <li>
+            <strong>Improving Community Social Welfare </strong>: Socially
+            sustainable tourism must be able to improve the quality of life of
+            local residents, including access to education, health, and other
+            social services.
+          </li>
+          <li>
+            <strong>Strengthening Community Participation </strong>: Local
+            communities must be involved in the planning, decision-making, and
+            management of tourism activities so that they feel ownership and
+            receive real benefits.
+          </li>
+          <li>
+            <strong>Protecting and Preserving Local Culture </strong>: Local
+            culture, traditions, languages, and values ​​must be respected and
+            preserved, not made into meaningless commercial objects. This
+            includes preventing folklorization (the simplification of culture
+            only for tourist consumption).
+          </li>
+          <li>
+            <strong>Maintaining Social Harmony : </strong>Tourism activities
+            must avoid social conflicts, such as unequal access to land,
+            exploitation of local labor, or gentrification due to the entry of
+            large investors.
+          </li>
+        </ul>
+      </div>
+    </main>
+    <!-- 5 Top Tempat-->
+    <section
+      class="card-container"
+      style="background-color: rgb(238, 234, 234)"
+    >
+      <div class="section-title">
+        <h2>5 Top-Priority Sustainable Tourism</h2>
+        <p>
+          Curious about how sustainability practices are implemented in the 5
+          Super Priority Destinations?
+        </p>
+        <p>
+          Discover how these iconic locations are embracing eco-friendly
+          practices, preserving cultural heritage, and promoting responsible
+          tourism to create a balanced and sustainable future for both the
+          environment and local communities. Explore the innovative steps taken
+          to maintain the delicate ecosystem while providing travelers with
+          memorable and responsible experiences.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <!-- Front of the card -->
+          <div class="card-front">
+            <img src="/static/images/borobudur.png" alt="Borobudur" />
+            <div class="card-title">Borobudur</div>
+          </div>
+          <!-- Back of the card -->
+          <div class="card-back">
+            <p>
+              Borobudur Temple stands as both a tourist attraction and a place
+              of worship for Buddhists in Magelang Regency, Central Java.
+              Recognized as a UNESCO World Cultural Heritage site in 1991,
+              Borobudur Temple invites you to experience not only its
+              architectural beauty but also the surrounding natural wonders of
+              the Borobudur area. As you venture here, immerse yourself in the
+              breathtaking landscapes of Puthuk Setumbu and Bukit Barade.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <!-- Front of the card -->
+          <div class="card-front">
+            <img src="/static/images/danau toba.png" alt="Danau Toba" />
+            <div class="card-title">Lake Toba</div>
+          </div>
+          <!-- Back of the card -->
+          <div class="card-back">
+            <p>
+              Lake Toba in North Sumatra has been fervently promoted as one of
+              the world's best tourist destinations in recent years. The natural
+              beauty of Lake Toba needs no introduction, with its clear skies
+              and captivating lake forming a picturesque combination that holds
+              its allure. On the shores of Lake Toba lies Bukit Gibeon in
+              Parapat, commonly known as Smile Hill. The name reflects the
+              delightful reactions of visitors who can't help but smile upon
+              witnessing its breathtaking panorama.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <!-- Front of the card -->
+          <div class="card-front">
+            <img src="/static/images/mandalika.png" alt="Mandalika" />
+            <div class="card-title">Mandalika</div>
+          </div>
+          <!-- Back of the card -->
+          <div class="card-back">
+            <p>
+              The Mandalika International Circuit has been proudly hosting the
+              MotoGP Championship since 2022. Nestled in a coastal region
+              renowned for its exotic beaches, it offers a perfect blend of
+              thrilling racing action and picturesque landscapes. Take, for
+              example, the famous Kuta Mandalika Beach, celebrated for its azure
+              waters, pristine white sands, and lush green hills. The water
+              attractions are equally exciting, featuring windsurfing, banana
+              boat rides, and paragliding.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <!-- Front of the card -->
+          <div class="card-front">
+            <img src="/static/images/raja ampat.png" alt="Raja Ampat" />
+            <div class="card-title">Raja Ampat</div>
+          </div>
+          <!-- Back of the card -->
+          <div class="card-back">
+            <p>
+              The crystal-clear ocean, pristine beaches, and exotic islands
+              elevate Raja Ampat to a coveted destination for many. Recognized
+              as one of Lonely Planet's six global destinations, it is
+              recommended as a must-visit location in 2023 for those seeking an
+              unwind destination. For diving enthusiasts, Raja Ampat boasts
+              numerous diving spots waiting to be explored. Dive into the depths
+              of Cross Wreck, offering an underwater panorama of a Japanese
+              shipwreck from World War II.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-inner">
+          <!-- Front of the card -->
+          <div class="card-front">
+            <img src="/static/images/likupang.png" alt="likupang" />
+            <div class="card-title">Likupang</div>
+          </div>
+          <!-- Back of the card -->
+          <div class="card-back">
+            <p>
+              The next recommended marine tourism destination in Indonesia is
+              Likupang, North Sulawesi. In Likupang, you can explore the
+              extensive coastline of Paal Beach, the renowned underwater
+              paradise of Pulisan Beach, and the beaches on Lihaga Island,
+              perfect for beachside camping enthusiasts. Likupang also offers
+              the scenic Pulisan Hill and Larata Hill. Both hills provide
+              breathtaking views of expansive grasslands blending harmoniously
+              with the stunning clarity of the blue sea.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Indonesia Map Section -->
+    <section class="indonesia-map-section">
+      <div class="section-title">
+        <h2>Tourism Sustainability Map</h2>
+      </div>
+      <div
+        id="indonesia-map"
+        style="height: 500px; width: 100%; background-color: rgb(255, 255, 255)"
+      ></div>
+    </section>
+
+    <!-- Aspects -->
+    <section>
+      <div class="carousel-container">
+        <!-- Left Side (Spotlight) -->
+        <div class="spotlight">
+          <h3>Aspects of sustainable tourism in Indonesia</h3>
+          <p>
+            To achieve this goal, the Ministry of Tourism and Creative
+            Economy/Tourism and Creative Economy Agency (Baparekraf) emphasizes
+            four main pillars: sustainable management in the tourism business,
+            long-term sustainable economic development, sustainable cultural
+            preservation, and environmental protection.
+          </p>
+        </div>
+
+        <!-- Right Side (Carousel Images) -->
+        <div class="carousel-images">
+          <div class="carousel-slide">
+            <div class="carousel-item">
+              <img
+                src="/static/images/indonesia - ekonomi.png"
+                alt="Indonesia Image"
+              />
+              <p>
+                <strong>Aspect Economic</strong> : These terms are central to
+                understanding the role of tourism in boosting the economic
+                development of a region. Economic growth through tourism
+                involves the creation of revenue, which circulates and
+                stimulates other sectors of the economy, such as local
+                businesses, infrastructure, and public services.
+              </p>
+            </div>
+            <div class="carousel-item">
+              <img
+                src="/static/images/indonesia - lingkungan.png"
+                alt="Resort Image"
+              />
+              <p>
+                <strong>Aspect Environment</strong> Conservation and Water
+                Conservation These terms highlight efforts to protect natural
+                resources, particularly water, which is a vital resource for
+                both local communities and the tourism industry. Conservation
+                efforts are necessary to ensure the long-term sustainability of
+                ecosystems that attract tourists.
+              </p>
+            </div>
+            <div class="carousel-item">
+              <img
+                src="/static/images/indonesia - sosial.png"
+                alt="Destination Image"
+              />
+              <p>
+                <strong>Aspect Social</strong> Cultural Development and Cultural
+                Preservation These terms highlight efforts to maintain and
+                develop local cultural practices and heritage, ensuring they
+                remain intact even as tourism grows. Cultural preservation aims
+                to protect traditions, languages, arts, and customs that may
+                otherwise be at risk from external influences.
+              </p>
+            </div>
+          </div>
+
+          <!-- Carousel Indicators -->
+          <div class="carousel-indicators">
+            <div class="indicator active" onclick="goToSlide(0)"></div>
+            <div class="indicator" onclick="goToSlide(1)"></div>
+            <div class="indicator" onclick="goToSlide(2)"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="/static/images/logo 1.png" alt="Indonesia Logo" />
+        </div>
+        <div class="footer-links">
+          <div>
+            <h3>Our Websites</h3>
+            <a href="https://asset.indonesia.travel/">Digital Asset</a>
+            <a href="https://indonesia.travel/yacht/en/">Yacht</a>
+            <a href="https://indonesia.travel/cruise/en/">Cruise</a>
+          </div>
+          <div>
+            <h3>Informations</h3>
+            <a href="https://www.indonesia.travel/gb/en/about-us">About Us</a>
+            <a href="https://www.indonesia.travel/gb/en/privacy-policy"
+              >Privacy Policy</a
+            >
+            <a href="https://www.indonesia.travel/gb/en/terms-conditions"
+              >Terms & Conditions</a
+            >
+            <a href="https://www.indonesia.travel/gb/en/cookie-policy"
+              >Cookie Policy</a
+            >
+            <a href="https://www.indonesia.travel/gb/en/contact-us"
+              >Contact Us</a
+            >
+          </div>
+
+          <div class="footer-social">
+            <h3>Sodial Media</h3>
+            <a
+              href="https://www.facebook.com/pesona.indonesia"
+              target="_blank"
+              title="Facebook"
+              ><i class="fab fa-facebook-f"></i> Facebook</a
+            >
+            <a
+              href="https://x.com/pesonaindonesia"
+              target="_blank"
+              title="Twitter"
+              ><i class="fab fa-twitter"></i> Twitter</a
+            >
+            <a
+              href="https://www.instagram.com/pesona.indonesia/#"
+              target="_blank"
+              title="Instagram"
+              ><i class="fab fa-instagram"></i> Instagram</a
+            >
+            <a
+              href="https://www.youtube.com/c/PesonaIndonesiaofficial"
+              target="_blank"
+              title="YouTube"
+              ><i class="fab fa-youtube"></i> Youtube</a
+            >
+            <a
+              href="https://www.tiktok.com/@pesonaindonesia"
+              target="_blank"
+              title="TikTok"
+              ><i class="fab fa-tiktok"></i> TikTok</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      var map = L.map("indonesia-map", {
+        center: [-5.0, 120.0],
+        zoom: 5,
+        zoomControl: false, // Menonaktifkan kontrol zoom
+        scrollWheelZoom: false, // Menonaktifkan zoom dengan scroll
+        dragging: false, // Menonaktifkan kemampuan peta untuk digeser
+        doubleClickZoom: false, // Menonaktifkan zoom dengan double-click
+        touchZoom: false, // Menonaktifkan zoom dengan sentuhan pada perangkat mobile
+        boxZoom: false, // Menonaktifkan zoom dengan area seleksi
+      }).setView([-5.0, 120.0], 5);
+
+      // Menambahkan layer peta dari OpenStreetMap
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        opacity: 0, // Menyembunyikan peta OpenStreetMap
+      }).addTo(map);
+
+      // Memuat GeoJSON untuk Indonesia
+      fetch("/static/data/indonesia-edit.json")
+        .then((response) => response.json())
+        .then((data) => {
+          var defaultColor = "#1d4ed8"; // Warna biru untuk wilayah default
+          var hoverColor = "#FF5733"; // Warna sorot saat hover (orange)
+
+          L.geoJSON(data, {
+            style: function () {
+              return {
+                fillColor: defaultColor, // Atur warna awal wilayah ke biru
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.5,
+              };
+            },
+            onEachFeature: function (feature, layer) {
+              // Membuat konten popup untuk setiap wilayah
+              var popupContent = `
+          <h3>${feature.properties.name}</h3>
+          <p>${
+            feature.properties.description || "Deskripsi tidak tersedia."
+          }</p>
+        `;
+
+              // Efek hover untuk menyoroti pulau atau wilayah dan menampilkan popup
+              layer.on("mouseover", function () {
+                layer.setStyle({
+                  fillColor: hoverColor, // Warna sorot saat hover
+                  weight: 2,
+                  opacity: 1,
+                  fillOpacity: 0.7,
+                });
+
+                // Menampilkan popup saat mouse menyentuh wilayah
+                layer.bindPopup(popupContent).openPopup();
+              });
+
+              // Reset style saat mouse keluar
+              layer.on("mouseout", function () {
+                layer.setStyle({
+                  fillColor: defaultColor, // Kembalikan ke warna biru
+                  weight: 1,
+                  opacity: 1,
+                  fillOpacity: 0.5,
+                });
+
+                // Menutup popup saat mouse keluar
+                layer.closePopup();
+              });
+            },
+          }).addTo(map);
+        })
+        .catch((error) => console.log("Error loading GeoJSON:", error));
+      document
+        .querySelector(".language-dropdown")
+        .addEventListener("change", function (event) {
+          const selectedLanguage = event.target.value;
+
+          // Implementasikan logika untuk mengubah bahasa, misalnya mengganti teks halaman atau menggunakan API untuk memuat ulang halaman dalam bahasa yang dipilih.
+          console.log(`Bahasa yang dipilih: ${selectedLanguage}`);
+        });
+
+      window.onscroll = function () {
+        var navbar = document.querySelector(".navbar");
+        if (window.pageYOffset > 0) {
+          navbar.classList.add("sticky");
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      };
+
+      let currentIndex = 0;
+      const items = document.querySelectorAll(".carousel-item");
+      const totalItems = items.length;
+      const indicators = document.querySelectorAll(".indicator");
+
+      function showNextSlide() {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+      }
+
+      function updateCarousel() {
+        const offset = -currentIndex * 100;
+        document.querySelector(
+          ".carousel-slide"
+        ).style.transform = `translateX(${offset}%)`;
+
+        // Update active indicator
+        indicators.forEach((indicator, index) => {
+          indicator.classList.remove("active");
+          if (index === currentIndex) {
+            indicator.classList.add("active");
+          }
+        });
+      }
+
+      function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+      }
+
+      // Automatically move to the next slide every 5 seconds
+      setInterval(showNextSlide, 5000);
+
+      function changeLanguage() {
+        const selectedLanguage =
+          document.querySelector(".language-dropdown").value;
+
+        // Tambahkan logika untuk merubah konten berdasarkan bahasa yang dipilih
+        if (selectedLanguage === "EN-IND") {
+          // Ganti konten halaman untuk bahasa Inggris - Indonesia
+          console.log("Language changed to EN - IND");
+          // Implementasikan perubahan konten di sini
+        } else if (selectedLanguage === "EN") {
+          // Ganti konten halaman untuk bahasa Inggris
+          console.log("Language changed to English");
+          // Implementasikan perubahan konten di sini
+        } else if (selectedLanguage === "ID") {
+          // Ganti konten halaman untuk bahasa Indonesia
+          console.log("Language changed to Indonesian");
+          // Implementasikan perubahan konten di sini
+        }
+      }
+    </script>
+  </body>
+</html>

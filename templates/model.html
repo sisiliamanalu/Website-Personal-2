@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sustainable Tourism</title>
+    <link rel="icon" href="/static/images/logo.png" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <a href="{{ url_for('index') }}">
+            <img src="/static/images/title.png" alt="Indonesia Logo" />
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="{{ url_for('indonesia') }}">Indonesia</a></li>
+          <li><a href="{{ url_for('asean') }}">ASEAN</a></li>
+          <li><a href="{{ url_for('data') }}">Data</a></li>
+          <li><a href="{{ url_for('model') }}">Model</a></li>
+          <li><a href="{{ url_for('information') }}">Information</a></li>
+        </ul>
+        <div class="language-selector">
+          <select class="language-dropdown">
+            <option value="EN-IND">EN - IND</option>
+          </select>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Leaflet.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="/static/style/styles.css" />
+  </head>
+  <body>
+    <div class="intro">
+      <p>
+        <strong> Fine-tuning</strong> is a crucial step in which a pre-trained
+        model is adapted to the specific dataset being used, in this case for a
+        neural network extraction (NER) task. Each model has a different
+        approach in terms of size and efficiency, which will affect their
+        fine-tuning process.
+      </p>
+    </div>
+
+    <div class="code-header">
+      <button class="btn" onclick="showSection('code')">AlBERT</button>
+      <button class="btn" onclick="showSection('plan')">BERT</button>
+      <button class="btn" onclick="showSection('collaborate')">
+        DistiBERT
+      </button>
+      <button class="btn" onclick="showSection('automate')">ELectra</button>
+      <button class="btn" onclick="showSection('secure')">RoBERTa</button>
+    </div>
+
+    <div class="container">
+      <div class="content">
+        <!-- Tabel Code Section -->
+        <div id="code" class="code-body">
+          <table>
+            <thead>
+              <tr>
+                <th>Label</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-score</th>
+                <th>Accuracy</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>B - ECONOMIC</td>
+                <td>0,80</td>
+                <td>0,94</td>
+                <td>0,86</td>
+                <td rowspan="8">0,86</td>
+              </tr>
+              <tr>
+                <td>I - ECONOMIC</td>
+                <td>0,73</td>
+                <td>0,79</td>
+                <td>0,76</td>
+              </tr>
+              <tr>
+                <td>B - SOCIAL</td>
+                <td>0,71</td>
+                <td>0,80</td>
+                <td>0,75</td>
+              </tr>
+              <tr>
+                <td>I - SOCIAL</td>
+                <td>0,89</td>
+                <td>0,94</td>
+                <td>0,91</td>
+              </tr>
+              <tr>
+                <td>B - ENVIRONMENT</td>
+                <td>0,60</td>
+                <td>0,73</td>
+                <td>0,66</td>
+              </tr>
+              <tr>
+                <td>I - ENVIRONMENT</td>
+                <td>0,88</td>
+                <td>0,91</td>
+                <td>0,89</td>
+              </tr>
+              <tr>
+                <td>O</td>
+                <td>0,95</td>
+                <td>0,95</td>
+                <td>0,95</td>
+              </tr>
+              <tr>
+                <td>macro avg</td>
+                <td>0,79</td>
+                <td>0,87</td>
+                <td>0,83</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            A lightweight version of BERT (AlBERT), proposed in Lan et al.
+            (2020), uses parameter sharing techniques and factorization to
+            reduce the number of parameters of BERT. Its architecture differs in
+            that it utilizes methods that share parameters between layers. The
+            default configuration of AlBERT allows parameter sharing between all
+            layers. It uses an embedding parameterization to decouple the hidden
+            layer size from the vocabulary embedding size, which makes the
+            embedding size increase significantly as the hidden layer size
+            increases. Additionally, ALBERT introduces the Sentience Order
+            Prediction (SOP) loss, which replaces the NSP task by determining
+            whether two sentences appear in correctness or sequence consistency,
+            better capturing discourse-level coherence. The researchers used the
+            ALBERT-base-v2 implementation, which has
+            <strong
+              >12 recurrent layers, 128 embeddings, 768 hidden layer sizes, 12
+              heads, and 11M parameters.</strong
+            >
+          </p>
+        </div>
+        <div id="plan" class="plan-section">
+          <table>
+            <thead>
+              <tr>
+                <th>Label</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-score</th>
+                <th>Accuracy</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>B - ECONOMIC</td>
+                <td>0,83</td>
+                <td>0,93</td>
+                <td>0,89</td>
+                <td rowspan="8">0,89</td>
+              </tr>
+              <tr>
+                <td>I - ECONOMIC</td>
+                <td>0,77</td>
+                <td>0,80</td>
+                <td>0,78</td>
+              </tr>
+              <tr>
+                <td>B - SOCIAL</td>
+                <td>0,84</td>
+                <td>0,87</td>
+                <td>0,85</td>
+              </tr>
+              <tr>
+                <td>I - SOCIAL</td>
+                <td>0,84</td>
+                <td>0,87</td>
+                <td>0,85</td>
+              </tr>
+              <tr>
+                <td>B - ENVIRONMENT</td>
+                <td>0,91</td>
+                <td>0,85</td>
+                <td>0,88</td>
+              </tr>
+              <tr>
+                <td>I - ENVIRONMENT</td>
+                <td>0,73</td>
+                <td>0,79</td>
+                <td>0,76</td>
+              </tr>
+              <tr>
+                <td>O</td>
+                <td>0,92</td>
+                <td>0,95</td>
+                <td>0,93</td>
+              </tr>
+              <tr>
+                <td>macro avg</td>
+                <td>0,84</td>
+                <td>0,88</td>
+                <td>0,86</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            BERT (Devlin et al., 2019) and several of its variants are
+            pre-trained models with custom paired neural networks. BERT
+            pre-training uses a Masked Language Model (MLM) and Next Sentence
+            Prediction (NSP) as objective functions. MLM consists of predicting
+            randomly masked tokens using the left and right contexts of the
+            tokens. In comparison, NSP focuses on distinguishing whether, in a
+            pair of sentences, the second follows the first. The researchers
+            used the BERT-base-uncased implementation, which has 12 layers, 768
+            hidden layer sizes, 12 heads, and 110M parameters.
+            <strong
+              >12 recurrent layers, 128 embeddings, 768 hidden layer sizes, 12
+              heads, and 11M parameters.</strong
+            >
+          </p>
+        </div>
+        <div id="collaborate" class="collaborate-section">
+          <table>
+            <thead>
+              <tr>
+                <th>Label</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-score</th>
+                <th>Accuracy</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>B - ECONOMIC</td>
+                <td>0,91</td>
+                <td>0,94</td>
+                <td>0,87</td>
+                <td rowspan="8">0,90</td>
+              </tr>
+              <tr>
+                <td>I - ECONOMIC</td>
+                <td>0,92</td>
+                <td>0,90</td>
+                <td>0,91</td>
+              </tr>
+              <tr>
+                <td>B - SOCIAL</td>
+                <td>0,80</td>
+                <td>0,92</td>
+                <td>0,86</td>
+              </tr>
+              <tr>
+                <td>I - SOCIAL</td>
+                <td>0,94</td>
+                <td>0,94</td>
+                <td>0,94</td>
+              </tr>
+              <tr>
+                <td>B - ENVIRONMENT</td>
+                <td>0,86</td>
+                <td>0,73</td>
+                <td>0,79</td>
+              </tr>
+              <tr>
+                <td>I - ENVIRONMENT</td>
+                <td>0,80</td>
+                <td>0,91</td>
+                <td>0,85</td>
+              </tr>
+              <tr>
+                <td>O</td>
+                <td>0,93</td>
+                <td>0,95</td>
+                <td>0,94</td>
+              </tr>
+              <tr>
+                <td>macro avg</td>
+                <td>0,88</td>
+                <td>0,90</td>
+                <td>0,88</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            Proposed by Sanh et al. (2020) is a distilled version of BERT that
+            retains 97% of its performance with 40% fewer parameters. It uses
+            knowledge distillation where a smaller student model learns to
+            imitate a larger teacher model. DistilBeRT reduces layers from 12 to
+            6, removes token-type embeddings and pooler layers, and introduces a
+            triple loss function that combines language modeling loss,
+            distillation loss (matching teacher soft target probabilities), and
+            cosine embedding loss (aligning the hidden states of the student and
+            teacher models). (Hinton et al., 2015). The researchers used the
+            Distilbert-base-uncased implementation, which has
+            <strong
+              >layers, 768 hidden layer sizes, 12 heads, and 66M
+              parameters.</strong
+            >
+          </p>
+        </div>
+        <div id="automate" class="automate-section">
+          <table>
+            <thead>
+              <tr>
+                <th>Label</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-score</th>
+                <th>Accuracy</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>B - ECONOMIC</td>
+                <td>0,60</td>
+                <td>0,79</td>
+                <td>0,68</td>
+                <td rowspan="8">0,85</td>
+              </tr>
+              <tr>
+                <td>I - ECONOMIC</td>
+                <td>0,89</td>
+                <td>0,80</td>
+                <td>0,84</td>
+              </tr>
+              <tr>
+                <td>B - SOCIAL</td>
+                <td>0,71</td>
+                <td>0,81</td>
+                <td>0,75</td>
+              </tr>
+              <tr>
+                <td>I - SOCIAL</td>
+                <td>0,60</td>
+                <td>0,92</td>
+                <td>0,72</td>
+              </tr>
+              <tr>
+                <td>B - ENVIRONMENT</td>
+                <td>0,81</td>
+                <td>0,90</td>
+                <td>0,85</td>
+              </tr>
+              <tr>
+                <td>I - ENVIRONMENT</td>
+                <td>0,79</td>
+                <td>0,87</td>
+                <td>0,83</td>
+              </tr>
+              <tr>
+                <td>O</td>
+                <td>0,96</td>
+                <td>0,95</td>
+                <td>0,95</td>
+              </tr>
+              <tr>
+                <td>macro avg</td>
+                <td>0,76</td>
+                <td>0,86</td>
+                <td>0,80</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            “Efficiently Learning an Encoder that Classifies Token Replacement
+            Accurately” (Clark et al., 2020), is the latest in a series of
+            comparisons. They introduce a different technique for the
+            transformer pre-training phase, known as Token Detection and
+            Replacement (RTD), which, unlike MLM, does not mask tokens but
+            replaces them with alternative samples using the generator part of
+            the architecture. Then, the discriminator part predicts the replaced
+            token. The architecture is more efficient because it learns from all
+            possible input tokens. Once pre-training is complete, the generator
+            is discarded, and only the discriminator is used in downstream
+            tasks. The researchers used the ELECTRA-base implementation, which
+            has
+            <strong
+              >layers, 768 hidden layer sizes, 4 heads, and 110M
+              parameters.</strong
+            >
+          </p>
+        </div>
+        <div id="secure" class="secure-section">
+          <table>
+            <thead>
+              <tr>
+                <th>Label</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-score</th>
+                <th>Accuracy</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>B - ECONOMIC</td>
+                <td>0,85</td>
+                <td>0,94</td>
+                <td>0,89</td>
+                <td rowspan="8">0,91</td>
+              </tr>
+              <tr>
+                <td>I - ECONOMIC</td>
+                <td>0,95</td>
+                <td>0,88</td>
+                <td>0,91</td>
+              </tr>
+              <tr>
+                <td>B - SOCIAL</td>
+                <td>0,98</td>
+                <td>0,86</td>
+                <td>0,92</td>
+              </tr>
+              <tr>
+                <td>I - SOCIAL</td>
+                <td>0,85</td>
+                <td>0,97</td>
+                <td>0,91</td>
+              </tr>
+              <tr>
+                <td>B - ENVIRONMENT</td>
+                <td>0,89</td>
+                <td>0,81</td>
+                <td>0,85</td>
+              </tr>
+              <tr>
+                <td>I - ENVIRONMENT</td>
+                <td>0,98</td>
+                <td>0,80</td>
+                <td>0,89</td>
+              </tr>
+              <tr>
+                <td>O</td>
+                <td>0,91</td>
+                <td>0,97</td>
+                <td>0,94</td>
+              </tr>
+              <tr>
+                <td>macro avg</td>
+                <td>0,92</td>
+                <td>0,89</td>
+                <td>0,90</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            The 'Robustly Optimized BERT Pretraining Approach' (Liu et al.,
+            2019) focused its work on improving the training stage of BERT. The
+            RoBERTa improvement involves pretraining the model for ex-periods,
+            which tend to be on larger datasets with longer sequences. It also
+            adjusts hyperparameters, using larger mini-batch sizes and learning
+            rates. RoBERTa also introduces dynamic masking, where the training
+            data is duplicated multiple times, and 15% of the tokens are
+            randomly masked in each instance. This reduces the need for more
+            training samples while allowing the model to learn from different
+            input patterns due to masking. Unlike BERT, RoBERTa is late without
+            the NSP task, which is believed to improve the performance of
+            downstream tasks. The researchers used the RoBERTa-base
+            implementation, which has
+            <strong
+              >layers, 768 hidden layer sizes, 12 heads, and 125M
+              parameters.</strong
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">
+      <h2>Comparison of Transformer Models</h2>
+    </div>
+
+    <div class="container">
+      <div class="content">
+        <div class="cek">
+          <table>
+            <thead>
+              <tr>
+                <th>Model</th>
+                <th>Parameters (million)</th>
+                <th>Training Time (minutes)</th>
+                <th>Accuracy (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>AlBERT</td>
+                <td>12</td>
+                <td>4</td>
+                <td>86</td>
+              </tr>
+              <tr>
+                <td>BERT</td>
+                <td>110</td>
+                <td>9</td>
+                <td>88</td>
+              </tr>
+              <tr>
+                <td>DistilBERT</td>
+                <td>66</td>
+                <td>5</td>
+                <td>90</td>
+              </tr>
+              <tr>
+                <td>Electra</td>
+                <td>14</td>
+                <td>4</td>
+                <td>85</td>
+              </tr>
+              <tr>
+                <td>RoBERTa</td>
+                <td>125</td>
+                <td>10</td>
+                <td>91</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            In terms of number of parameters, training time, and accuracy. From
+            this, it can be seen that RoBERTa has the highest accuracy of 91%,
+            which shows excellent performance in information extraction despite
+            requiring a longer training time of 10 minutes, due to its large
+            number of parameters (125 million). On the other hand, DistilBERT,
+            with a smaller number of parameters (66 million), is able to achieve
+            an accuracy of 90% and requires a shorter training time of 5
+            minutes, making it an efficient choice for applications that
+            prioritize training speed. BERT and ALBERT recorded accuracies of
+            88% and 86%, respectively, with BERT slightly superior in accuracy
+            despite requiring a longer training time (9 minutes) compared to
+            ALBERT which only requires 4 minutes due to the smaller number of
+            parameters (12 million). Meanwhile, ELECTRA recorded the lowest
+            accuracy among the other models, at 85%, but its training time is
+            very efficient, at only 4 minutes, thanks to its faster pretraining
+            approach. Thus, RoBERTa performed best in accuracy, while DistilBERT
+            and ALBERT offered a good balance between speed and accuracy, while
+            ELECTRA excelled in training speed, albeit with a slight decrease in
+            accuracy. Recognizing non-text entities. With solid performance
+            across all labels, these models demonstrated their ability to
+            effectively detect and classify entities.
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="/static/images/logo 1.png" alt="Indonesia Logo" />
+        </div>
+        <div class="footer-links">
+          <div>
+            <h3>Our Websites</h3>
+            <a href="https://asset.indonesia.travel/">Digital Asset</a>
+            <a href="https://indonesia.travel/yacht/en/">Yacht</a>
+            <a href="https://indonesia.travel/cruise/en/">Cruise</a>
+          </div>
+          <div>
+            <h3>Informations</h3>
+            <a href="https://www.indonesia.travel/gb/en/about-us">About Us</a>
+            <a href="https://www.indonesia.travel/gb/en/privacy-policy"
+              >Privacy Policy</a
+            >
+            <a href="https://www.indonesia.travel/gb/en/terms-conditions"
+              >Terms & Conditions</a
+            >
+            <a href="https://www.indonesia.travel/gb/en/cookie-policy"
+              >Cookie Policy</a
+            >
+            <a href="https://www.indonesia.travel/gb/en/contact-us"
+              >Contact Us</a
+            >
+          </div>
+
+          <div class="footer-social">
+            <h3>Sodial Media</h3>
+            <a
+              href="https://www.facebook.com/pesona.indonesia"
+              target="_blank"
+              title="Facebook"
+              ><i class="fab fa-facebook-f"></i> Facebook</a
+            >
+            <a
+              href="https://x.com/pesonaindonesia"
+              target="_blank"
+              title="Twitter"
+              ><i class="fab fa-twitter"></i> Twitter</a
+            >
+            <a
+              href="https://www.instagram.com/pesona.indonesia/#"
+              target="_blank"
+              title="Instagram"
+              ><i class="fab fa-instagram"></i> Instagram</a
+            >
+            <a
+              href="https://www.youtube.com/c/PesonaIndonesiaofficial"
+              target="_blank"
+              title="YouTube"
+              ><i class="fab fa-youtube"></i> Youtube</a
+            >
+            <a
+              href="https://www.tiktok.com/@pesonaindonesia"
+              target="_blank"
+              title="TikTok"
+              ><i class="fab fa-tiktok"></i> TikTok</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      window.onscroll = function () {
+        var navbar = document.querySelector(".navbar");
+        if (window.pageYOffset > 0) {
+          navbar.classList.add("sticky");
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      };
+      function showSection(sectionId) {
+        // Sembunyikan semua section
+        const sections = document.querySelectorAll(
+          ".code-body, .plan-section, .collaborate-section, .automate-section, .secure-section"
+        );
+        sections.forEach((section) => (section.style.display = "none"));
+
+        // Tampilkan section yang dipilih
+        document.getElementById(sectionId).style.display = "block";
+
+        // Ubah tombol menjadi aktif
+        const buttons = document.querySelectorAll(".btn");
+        buttons.forEach((button) => button.classList.remove("active"));
+        document
+          .querySelector(`button[onclick="showSection('${sectionId}')"]`)
+          .classList.add("active");
+      }
+
+      showSection("code", "code-1");
+    </script>
+  </body>
+</html>

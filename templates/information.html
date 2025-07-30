@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sustainable Tourism</title>
+    <link rel="icon" href="/static/images/logo.png" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <a href="{{ url_for('index') }}">
+            <img src="/static/images/title.png" alt="Indonesia Logo" />
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="{{ url_for('indonesia') }}">Indonesia</a></li>
+          <li><a href="{{ url_for('asean') }}">ASEAN</a></li>
+          <li><a href="{{ url_for('data') }}">Data</a></li>
+          <li><a href="{{ url_for('model') }}">Model</a></li>
+          <li><a href="{{ url_for('information') }}">Information</a></li>
+        </ul>
+        <div class="language-selector">
+          <select class="language-dropdown">
+            <option value="EN-IND">EN - IND</option>
+          </select>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Leaflet.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="/static/style/styles.css" />
+  </head>
+  <body>
+    <div class="intro">
+      <p>
+        On this page, you can extract information related to sustainable
+        tourism. You can copy news, sentences, or other text related to
+        sustainable tourism. After extracting the information, you can
+        immediately access the content of the text related to sustainable
+        tourism.
+      </p>
+      <p>
+        <strong>Information extraction (IE)</strong>is the automated process of
+        extracting relevant, structured data from unstructured information
+        sources, such as text, documents, or web pages. This process aims to
+        extract important information and transform it into a more organized
+        format, such as a database, table, or entity that can be further
+        processed.
+      </p>
+    </div>
+
+    <form
+      id="ner-form"
+      style="width: 100%; display: flex; flex-direction: column; gap: 10px"
+    >
+      <textarea
+        id="input-text"
+        placeholder="Enter text here..."
+        style="
+          width: 1150px;
+          height: 200px;
+          padding: 10px;
+          border: 2px solid gray;
+          border-radius: 5px;
+          font-size: 16px;
+          margin: 10px auto;
+        "
+      ></textarea>
+
+      <div style="text-align: center">
+        <button
+          type="button"
+          id="reset-button"
+          style="
+            padding: 10px 20px;
+            font-weight: bold;
+            background-color: gray;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 10px auto;
+          "
+        >
+          Reset
+        </button>
+        <button
+          type="button"
+          id="extract-button"
+          style="
+            padding: 10px 20px;
+            font-weight: bold;
+            background-color: gray;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 10px auto;
+          "
+        >
+          Send
+        </button>
+      </div>
+    </form>
+
+    <div
+      id="highlighted-result"
+      style="
+        margin-top: 20px;
+        border: 2px solid gray;
+        padding: 10px;
+        font-size: 16px;
+        min-height: 200px;
+        border-radius: 5px;
+        width: 1150px;
+        height: 200px;
+        margin: 10px auto;
+      "
+    ></div>
+    <div class="intro">
+      <p>
+        <strong>Information</strong>
+      </p>
+      <ul>
+        <li>
+          <strong>Green : Environment</strong> - Indicates factors related to
+          environmental sustainability, natural resource conservation, and
+          efforts to reduce negative impacts on ecosystems in tourism
+          activities.
+        </li>
+        <li>
+          <strong>Blue : Economy</strong> - Relates to the economic impacts of
+          sustainable tourism, including revenue generated, jobs created, and
+          the tourism sector's contribution to the local economy and its
+          sustainability.
+        </li>
+        <li>
+          <strong>Orange : Social</strong> - Includes social aspects of
+          sustainable tourism, such as empowering local communities, respecting
+          culture and traditions, and the impact on the social well-being of
+          communities surrounding tourism destinations.
+        </li>
+      </ul>
+    </div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="/static/images/logo 1.png" alt="Indonesia Logo" />
+        </div>
+        <div class="footer-links">
+          <div>
+            <h3>Our Websites</h3>
+            <a href="https://asset.indonesia.travel/">Digital Asset</a>
+            <a href="https://indonesia.travel/yacht/en/">Yacht</a>
+            <a href="https://indonesia.travel/cruise/en/">Cruise</a>
+          </div>
+          <div>
+            <h3>Informations</h3>
+            <a href="https://www.indonesia.travel/gb/en/about-us">About Us</a>
+            <a href="https://www.indonesia.travel/gb/en/privacy-policy"
+              >Privacy Policy</a
+            >
+            <a href="https://www.indonesia.travel/gb/en/terms-conditions"
+              >Terms & Conditions</a
+            >
+            <a href="https://www.indonesia.travel/gb/en/cookie-policy"
+              >Cookie Policy</a
+            >
+            <a href="https://www.indonesia.travel/gb/en/contact-us"
+              >Contact Us</a
+            >
+          </div>
+
+          <div class="footer-social">
+            <h3>Sodial Media</h3>
+            <a
+              href="https://www.facebook.com/pesona.indonesia"
+              target="_blank"
+              title="Facebook"
+              ><i class="fab fa-facebook-f"></i> Facebook</a
+            >
+            <a
+              href="https://x.com/pesonaindonesia"
+              target="_blank"
+              title="Twitter"
+              ><i class="fab fa-twitter"></i> Twitter</a
+            >
+            <a
+              href="https://www.instagram.com/pesona.indonesia/#"
+              target="_blank"
+              title="Instagram"
+              ><i class="fab fa-instagram"></i> Instagram</a
+            >
+            <a
+              href="https://www.youtube.com/c/PesonaIndonesiaofficial"
+              target="_blank"
+              title="YouTube"
+              ><i class="fab fa-youtube"></i> Youtube</a
+            >
+            <a
+              href="https://www.tiktok.com/@pesonaindonesia"
+              target="_blank"
+              title="TikTok"
+              ><i class="fab fa-tiktok"></i> TikTok</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      window.onscroll = function () {
+        var navbar = document.querySelector(".navbar");
+        if (window.pageYOffset > 0) {
+          navbar.classList.add("sticky");
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      };
+      document
+        .getElementById("reset-button")
+        .addEventListener("click", function () {
+          // Mengatur ulang nilai input field dan textarea
+          document.getElementById("input-text").value = ""; // Reset textarea
+          document.getElementById("input-field").value = ""; // Reset input text field
+        });
+      document
+        .getElementById("extract-button")
+        .addEventListener("click", async function () {
+          const text = document.getElementById("input-text").value;
+
+          const response = await fetch("/extract", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text: text }),
+          });
+
+          const data = await response.json();
+          let highlightedText = text;
+
+          data.sort((a, b) => b.text.length - a.text.length);
+
+          const positions = [];
+
+          data.forEach((item) => {
+            const regex = new RegExp(item.text, "i");
+            const match = regex.exec(highlightedText);
+            if (match) {
+              positions.push({
+                start: match.index,
+                end: match.index + match[0].length,
+                label: item.label,
+                text: match[0],
+              });
+            }
+          });
+
+          positions.sort((a, b) => a.start - b.start);
+
+          let resultHtml = "";
+          let lastIndex = 0;
+          positions.forEach((pos) => {
+            resultHtml += highlightedText.slice(lastIndex, pos.start);
+            resultHtml += `<span class="highlight-${pos.label}">${pos.text}</span>`;
+            lastIndex = pos.end;
+          });
+          resultHtml += highlightedText.slice(lastIndex);
+
+          document.getElementById("highlighted-result").innerHTML =
+            "<p>" + resultHtml + "</p>";
+
+          document.getElementById("result-list").innerHTML = "";
+        });
+    </script>
+  </body>
+</html>

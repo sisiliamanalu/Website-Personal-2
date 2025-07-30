@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sustainable Tourism</title>
+    <link rel="icon" href="/static/images/logo.png" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Leaflet.js CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="/static/style/styles.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="navbar">
+        <div class="logo">
+          <a href="{{ url_for('index') }}">
+            <img src="/static/images/title.png" alt="Indonesia Logo" />
+          </a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="{{ url_for('indonesia') }}">Indonesia</a></li>
+          <li><a href="{{ url_for('asean') }}">ASEAN</a></li>
+          <li><a href="{{ url_for('data') }}">Data</a></li>
+          <li><a href="{{ url_for('model') }}">Model</a></li>
+          <li><a href="{{ url_for('information') }}">Information</a></li>
+        </ul>
+        <div class="language-selector">
+          <select class="language-dropdown">
+            <option value="EN-IND">EN - IND</option>
+            <!-- Tambahkan lebih banyak pilihan bahasa sesuai kebutuhan -->
+          </select>
+        </div>
+      </nav>
+    </header>
+    <!-- Main -->
+    <section class="main">
+      <h1>ASEAN Framework on Sustainable Tourism Development</h1>
+      <div class="circle">
+        <img src="/static/images/pillars.png" alt="Sustainable Tourism" />
+        <div class="circle-text">
+          <h2>Long-term Vision</h2>
+          <p>
+            “An ASEAN region that is recognised as a quality sustainable tourism
+            destination, which promotes the economic prosperity, welfare, and
+            engagement of the local community; protects and develops its natural
+            environment and culture; and provides a high-quality experience to
+            responsible and sustainable-minded visitors/tourists.”
+          </p>
+          <h2>Overarching Operational Goal</h2>
+          <p>
+            Continue to promote the growth and development of the tourism
+            sector, as a critical contributor to overall economic growth and
+            development, but with a stronger awareness of and focus on the
+            environmental and socio-cultural impacts of tourism activities and
+            resolve to undertake initiatives to reduce tourism’s adverse
+            footprint on the environment and communities and enhance the
+            environment and communities’ well-being.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- ASEAN Map Section -->
+    <section
+      class="asean-map-section"
+      style="background-color: rgb(238, 234, 234)"
+    >
+      <div class="section-title">
+        <h2>ASEAN Tourism Sustainability Map</h2>
+      </div>
+      <div class="map-container">
+        <div
+          id="asean-map"
+          style="
+            height: 600px;
+            width: 100%;
+            background-color: rgb(255, 255, 255);
+          "
+        ></div>
+      </div>
+    </section>
+    <!-- Aspect -->
+    <section class="asean">
+      <div class="section-title">
+        <h2>Aspects of Sustainable Tourism ASEAN</h2>
+      </div>
+      <div class="card-container-asean">
+        <div class="card-asean-1">
+          <h3>Economic Graph</h3>
+          <div class="card-inner-asean">
+            <!-- Front of the card -->
+            <div class="card-front-asean">
+              <img src="/static/images/grafikecomic.png" alt="Economic Asean" />
+            </div>
+            <!-- Back of the card -->
+            <div class="card-back-asean">
+              <p>
+                The bar chart on the left shows the number of mentions for the
+                term “economic” in sustainable tourism across ASEAN countries.
+                Singapore tops the list with 345 mentions, followed by Thailand
+                with 311, and Malaysia with 294. These countries appear to have
+                the greatest focus on the economic aspects of sustainable
+                tourism, indicating their important role in the tourism economy
+                in the region.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card-asean">
+          <h3>Economics Word Cloud</h3>
+          <div class="card-inner-asean">
+            <!-- Front of the card -->
+            <div class="card-front-asean">
+              <img
+                src="/static/images/ekonomi - asean.png"
+                alt="Economic Asean"
+              />
+            </div>
+            <!-- Back of the card -->
+            <div class="card-back-asean">
+              <p>
+                The word cloud on the right visualizes the main themes related
+                to “economic” in sustainable tourism. The most frequently
+                occurring terms are “opportunity,” “growth,” “business,”
+                “investment,” and “livelihood.” This highlights the economic
+                potential of tourism, with a focus on business opportunities,
+                job creation, and economic development. The figure emphasizes
+                the importance of economic opportunities, growth and innovation
+                as key factors for driving sustainable tourism practices in the
+                region.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card-asean-1">
+          <h3>Environment Graph</h3>
+          <div class="card-inner-asean">
+            <!-- Front of the card -->
+            <div class="card-front-asean">
+              <img
+                src="/static/images/grafikenvironment.png"
+                alt="Environment Asean"
+              />
+            </div>
+            <!-- Back of the card -->
+            <div class="card-back-asean">
+              <p>
+                Singapore ranks highest with 371 mentions, followed by Indonesia
+                with 305, and Thailand with 289. These countries are clearly
+                leading in their focus on environmental aspects within
+                sustainable tourism, underlining their strong commitment to
+                addressing environmental challenges and incorporating
+                sustainability into their tourism practices.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card-asean">
+          <h3>Environmet Word Cloud</h3>
+          <div class="card-inner-asean">
+            <!-- Front of the card -->
+            <div class="card-front-asean">
+              <img
+                src="/static/images/lingkungan - asean.png"
+                alt="Economic Asean"
+              />
+            </div>
+            <!-- Back of the card -->
+            <div class="card-back-asean">
+              <p>
+                The word cloud on the right visualizes the key themes related to
+                “environment” in sustainable tourism. The most frequent terms
+                are “waste,” “management,” “water,” “conservation,” “pollution
+                mitigation,” and “plastic.” This reflects the significant
+                environmental concerns being discussed, which are essential for
+                sustainable tourism practices. These themes highlight the
+                critical role of environmental protection, resource
+                conservation, and sustainable waste management in ensuring the
+                long-term viability of tourism.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card-asean-1">
+          <h3>Social Graph</h3>
+          <div class="card-inner-asean">
+            <!-- Front of the card -->
+            <div class="card-front-asean">
+              <img src="/static/images/grafiksocial.png" alt="Economic Asean" />
+            </div>
+            <!-- Back of the card -->
+            <div class="card-back-asean">
+              <p>
+                Malaysia leads with 381 mentions, followed by Indonesia with
+                346, and Singapore with 296. These countries are emphasizing the
+                social aspects of sustainable tourism, indicating their focus on
+                community well-being, social inclusion, and cultural
+                preservation within their tourism policies.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card-asean">
+          <h3>Social Word Cloud</h3>
+          <div class="card-inner-asean">
+            <!-- Front of the card -->
+            <div class="card-front-asean">
+              <img
+                src="/static/images/sosial - asean.png"
+                alt="Economic Asean"
+              />
+            </div>
+            <!-- Back of the card -->
+            <div class="card-back-asean">
+              <p>
+                The word cloud on the right visualizes the main themes related
+                to “social” in sustainable tourism. Key terms include
+                “community,” “empowerment,” “tourist safety,” “public
+                participation,” “education,” and “cultural respect.” These terms
+                highlight the importance of community engagement, ensuring
+                safety for tourists, empowering local communities, and promoting
+                social development. Social sustainability in tourism is heavily
+                focused on creating a positive impact on local communities,
+                preserving cultural heritage, and improving the welfare and
+                participation of locals in tourism activities.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-logo">
+          <img src="/static/images/logo 1.png" alt="Indonesia Logo" />
+        </div>
+        <div class="footer-links">
+          <div>
+            <h3>Our Websites</h3>
+            <a href="https://asset.indonesia.travel/">Digital Asset</a>
+            <a href="https://indonesia.travel/yacht/en/">Yacht</a>
+            <a href="https://indonesia.travel/cruise/en/">Cruise</a>
+          </div>
+          <div>
+            <h3>Informations</h3>
+            <a href="https://www.indonesia.travel/gb/en/about-us">About Us</a>
+            <a href="https://www.indonesia.travel/gb/en/privacy-policy"
+              >Privacy Policy</a
+            >
+            <a href="https://www.indonesia.travel/gb/en/terms-conditions"
+              >Terms & Conditions</a
+            >
+            <a href="https://www.indonesia.travel/gb/en/cookie-policy"
+              >Cookie Policy</a
+            >
+            <a href="https://www.indonesia.travel/gb/en/contact-us"
+              >Contact Us</a
+            >
+          </div>
+
+          <div class="footer-social">
+            <h3>Sodial Media</h3>
+            <a
+              href="https://www.facebook.com/pesona.indonesia"
+              target="_blank"
+              title="Facebook"
+              ><i class="fab fa-facebook-f"></i> Facebook</a
+            >
+            <a
+              href="https://x.com/pesonaindonesia"
+              target="_blank"
+              title="Twitter"
+              ><i class="fab fa-twitter"></i> Twitter</a
+            >
+            <a
+              href="https://www.instagram.com/pesona.indonesia/#"
+              target="_blank"
+              title="Instagram"
+              ><i class="fab fa-instagram"></i> Instagram</a
+            >
+            <a
+              href="https://www.youtube.com/c/PesonaIndonesiaofficial"
+              target="_blank"
+              title="YouTube"
+              ><i class="fab fa-youtube"></i> Youtube</a
+            >
+            <a
+              href="https://www.tiktok.com/@pesonaindonesia"
+              target="_blank"
+              title="TikTok"
+              ><i class="fab fa-tiktok"></i> TikTok</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+      var map = L.map("asean-map", {
+        center: [-5.0, 120.0],
+        zoom: 5,
+        zoomControl: false,
+        scrollWheelZoom: true,
+        dragging: true,
+        doubleClickZoom: false,
+        touchZoom: false,
+        boxZoom: false,
+      }).setView([-5.0, 120.0], 5);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        opacity: 0,
+      }).addTo(map);
+
+      // Memuat GeoJSON untuk ASEAN
+      fetch("/static/data/southeast-asia.json")
+        .then((response) => response.json())
+        .then((data) => {
+          var defaultColor = "#1d4ed8";
+          var hoverColor = "#FF5733";
+
+          L.geoJSON(data, {
+            style: function () {
+              return {
+                fillColor: defaultColor,
+                weight: 1,
+                opacity: 1,
+                fillOpacity: 0.5,
+              };
+            },
+            onEachFeature: function (feature, layer) {
+              var popupContent = `
+          <h3>${feature.properties.name}</h3>
+          <p>${
+            feature.properties.description || "Deskripsi tidak tersedia."
+          }</p>
+        `;
+
+              layer.on("mouseover", function () {
+                layer.setStyle({
+                  fillColor: hoverColor,
+                  weight: 2,
+                  opacity: 1,
+                  fillOpacity: 0.7,
+                });
+
+                layer.bindPopup(popupContent).openPopup();
+              });
+
+              layer.on("mouseout", function () {
+                layer.setStyle({
+                  fillColor: defaultColor,
+                  weight: 1,
+                  opacity: 1,
+                  fillOpacity: 0.5,
+                });
+
+                layer.closePopup();
+              });
+            },
+          }).addTo(map);
+        })
+        .catch((error) => console.log("Error loading GeoJSON:", error));
+      document
+        .querySelector(".language-dropdown")
+        .addEventListener("change", function (event) {
+          const selectedLanguage = event.target.value;
+
+          console.log(`Bahasa yang dipilih: ${selectedLanguage}`);
+        });
+
+      window.onscroll = function () {
+        var navbar = document.querySelector(".navbar");
+        if (window.pageYOffset > 0) {
+          navbar.classList.add("sticky");
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      };
+    </script>
+  </body>
+</html>
